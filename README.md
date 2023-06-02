@@ -19,3 +19,4 @@ The repository currently includes the following data structures and algorithms:
   * Merge Sort
   * Quick Sort
   * Counting Sort
+- Double Linked List
