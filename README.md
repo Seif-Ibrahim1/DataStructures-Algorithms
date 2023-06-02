@@ -10,3 +10,11 @@ The repository currently includes the following data structures and algorithms:
 - Binary Search Tree (BST)
 - AVL Tree
 - Min Heap
+- Sorting algorithms:
+  * Insertion Sort
+  * Selection Sort
+  * Bubble Sort
+  * Shell Sort
+  * Merge Sort
+  * Quick Sort
+  * Counting Sort
