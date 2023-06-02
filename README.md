@@ -10,7 +10,6 @@ The repository currently includes the following data structures and algorithms:
 - Binary Search Tree (BST)
 - AVL Tree
 - Min Heap
-- Each implementation is provided as a separate C++ file, along with a brief explanation of the data structure or algorithm and its key operations.
 
 ## Contributions
 Contributions to this repository are welcome! If you have any improvements, bug fixes, or additional data structures/algorithms that you would like to contribute, please follow these steps:
