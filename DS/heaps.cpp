@@ -167,6 +167,82 @@ public:
     }
 };
 
+//----------------------------------------------------------------
+//----------------------Heap as functions-------------------------
+//----------------------------------------------------------------
+template<typename T>
+void MAX_HEAPIFY(T *array, int index, int size) {
+    int leftOfIndex = 2 * index + 1;
+    int rightOfIndex = 2 * index + 2;
+    int largest = index;
+
+    if (leftOfIndex < size && array[leftOfIndex] > array[largest]) {
+        largest = leftOfIndex;
+    }
+
+    if (rightOfIndex < size && array[rightOfIndex] > array[largest]) {
+        largest = rightOfIndex;
+    }
+
+    if (largest != index) {
+        std::swap(array[index], array[largest]);
+        MAX_HEAPIFY(array, largest, size);
+    }
+}
+
+template<typename T>
+void BUILD_MAX_HEAP(T *array, int size) {
+    for (int i = size / 2 - 1; i >= 0; i--) {
+        MAX_HEAPIFY(array, i, size);
+    }
+}
+
+template<typename T>
+void HEAP_SORT(T *array, int size) {
+    BUILD_MAX_HEAP(array, size);
+
+    for (int i = size - 1; i > 0; i--) {
+        std::swap(array[0], array[i]);
+        MAX_HEAPIFY(array, 0, i);
+    }
+}
+
+template<typename T>
+T HEAP_MAXIMUM(T *array) {
+    return array[0];
+}
+
+template<typename T>
+void HEAP_EXTRACT_MAX(T *array, int& size) {
+    if (size <= 0) {
+        return; // Heap is empty
+    }
+
+    std::swap(array[0], array[size - 1]);
+    array[size - 1] = T();
+    size--;
+    MAX_HEAPIFY(array, 0, size);
+}
+
+template<typename T>
+void printArray(T *array, int size) {
+    for (int i = 0; i < size; i++) {
+        std::cout << array[i] << " ";
+    }
+    std::cout << std::endl;
+}
+template<typename T>
+void HEAP_CHANGE_KEY(T *array, int keyIndex, T newValue) {
+    array[keyIndex] = newValue;
+    int parentIndex = (keyIndex - 1) / 2;
+
+    while (keyIndex > 0 && array[parentIndex] < array[keyIndex]) {
+        std::swap(array[keyIndex], array[parentIndex]);
+        keyIndex = parentIndex;
+        parentIndex = (keyIndex - 1) / 2;
+    }
+}
+
 int main() {
     MinHeap<int> myHeap;
 
@@ -206,3 +282,4 @@ int main() {
 
     return 0;
 }
+
