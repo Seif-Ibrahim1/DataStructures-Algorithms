@@ -1,6 +1,6 @@
 /*
     Author: Youssef Moataz
-    Project: Min Heap
+    Project: Sort Algorithms
     Description: 7 Sorting algorithms implementation
 
     Last Updated: 2/6/2023
