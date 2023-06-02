@@ -279,7 +279,55 @@ int main() {
     assert(myHeap.isEmpty());
 
     std::cout << "All test cases passed!" << std::endl;
+//----------------------------------------------------------------
+//              Test Cases For MAX HEAP FUNCTIONS
+//----------------------------------------------------------------
+    int array1[] = { 4, 10, 3, 5, 1 };
+    int size1 = sizeof(array1) / sizeof(array1[0]);
 
+    std::cout << "Original array: ";
+    printArray(array1, size1);
+
+    // Testing MAX_HEAPIFY
+    MAX_HEAPIFY(array1, 0, size1);
+    std::cout << "MAX_HEAPIFY result: ";
+    printArray(array1, size1);
+
+    int array2[] = { 3, 7, 2, 5, 1, 8, 6, 4 };
+    int size2 = sizeof(array2) / sizeof(array2[0]);
+
+    std::cout << "\nOriginal array: ";
+    printArray(array2, size2);
+
+    // Testing BUILD_MAX_HEAP
+    BUILD_MAX_HEAP(array2, size2);
+    std::cout << "BUILD_MAX_HEAP result: ";
+    printArray(array2, size2);
+
+    // Testing HEAP_SORT
+    HEAP_SORT(array2, size2);
+    std::cout << "HEAP_SORT result: ";
+    printArray(array2, size2);
+
+    int array3[] = { 9, 6, 8, 2, 4 };
+    int size3 = sizeof(array3) / sizeof(array3[0]);
+
+    std::cout << "\nOriginal array: ";
+    printArray(array3, size3);
+
+    // Testing HEAP_MAXIMUM
+    int maxElement = HEAP_MAXIMUM(array3);
+    std::cout << "HEAP_MAXIMUM: " << maxElement << std::endl;
+
+    // Testing HEAP_EXTRACT_MAX
+    HEAP_EXTRACT_MAX(array3, size3);
+    std::cout << "HEAP_EXTRACT_MAX result: ";
+    printArray(array3, size3);
+
+    // Testing HEAP_CHANGE_KEY
+    HEAP_CHANGE_KEY(array3, 2, 10);
+    std::cout << "HEAP_CHANGE_KEY result: ";
+    printArray(array3, size3);
     return 0;
 }
 
