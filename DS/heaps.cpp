@@ -1,11 +1,11 @@
 /*
-    Author: Seif Ibrahim
+    Author: Seif Ibrahim, Ahmed Hanafy
     Project: Min Heap
     Description: Min Heap Data Strcture implementation
 
     Last Updated: 2/6/2023
 
-    Github: Seif-Ibrahim1
+    Github: Seif-Ibrahim1, ahanfybekheet
 
 */
 
