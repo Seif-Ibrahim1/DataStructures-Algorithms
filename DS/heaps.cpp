@@ -170,60 +170,112 @@ public:
 //----------------------------------------------------------------
 //----------------------Heap as functions-------------------------
 //----------------------------------------------------------------
+/**
+ * Performs the Max-Heapify operation on the given array at the specified index.
+ * It assumes that the binary trees rooted at the left and right children of index are max-heaps,
+ * but array[index] might be smaller than its children, violating the max-heap property.
+ * This function corrects the violation by recursively swapping elements until the max-heap property is restored.
+ *
+ * @param array The array to perform Max-Heapify on.
+ * @param index The index at which Max-Heapify operation needs to be performed.
+ * @param size The size of the array.
+ * @tparam T The type of elements in the array.
+ */
 template<typename T>
 void MAX_HEAPIFY(T *array, int index, int size) {
     int leftOfIndex = 2 * index + 1;
     int rightOfIndex = 2 * index + 2;
     int largest = index;
 
+    // Compare the element at index with its left child
     if (leftOfIndex < size && array[leftOfIndex] > array[largest]) {
         largest = leftOfIndex;
     }
 
+    // Compare the element at index with its right child
     if (rightOfIndex < size && array[rightOfIndex] > array[largest]) {
         largest = rightOfIndex;
     }
 
+    // If the largest element is not the current index, swap the elements and recursively perform Max-Heapify
     if (largest != index) {
         std::swap(array[index], array[largest]);
         MAX_HEAPIFY(array, largest, size);
     }
 }
 
+/**
+ * Builds a max-heap from the given array by repeatedly calling MAX_HEAPIFY on non-leaf nodes in reverse order.
+ *
+ * @param array The array to build a max-heap from.
+ * @param size The size of the array.
+ * @tparam T The type of elements in the array.
+ */
 template<typename T>
 void BUILD_MAX_HEAP(T *array, int size) {
+    // Start from the last non-leaf node and perform Max-Heapify on each node in reverse order
     for (int i = size / 2 - 1; i >= 0; i--) {
         MAX_HEAPIFY(array, i, size);
     }
 }
 
+/**
+ * Sorts the given array in ascending order using the Heap Sort algorithm.
+ *
+ * @param array The array to be sorted.
+ * @param size The size of the array.
+ * @tparam T The type of elements in the array.
+ */
 template<typename T>
 void HEAP_SORT(T *array, int size) {
     BUILD_MAX_HEAP(array, size);
 
+    // Extract the maximum element from the heap and place it at the end of the array
     for (int i = size - 1; i > 0; i--) {
         std::swap(array[0], array[i]);
         MAX_HEAPIFY(array, 0, i);
     }
 }
 
+/**
+ * Returns the maximum element from the heap (the first element in the array).
+ *
+ * @param array The array representing the heap.
+ * @tparam T The type of elements in the array.
+ * @return The maximum element from the heap.
+ */
 template<typename T>
 T HEAP_MAXIMUM(T *array) {
     return array[0];
 }
 
+/**
+ * Extracts the maximum element from the heap and updates the heap size.
+ *
+ * @param array The array representing the heap.
+ * @param size The current size of the heap.
+ * @tparam T The type of elements in the array.
+ */
 template<typename T>
 void HEAP_EXTRACT_MAX(T *array, int& size) {
     if (size <= 0) {
         return; // Heap is empty
     }
 
+    // Replace the maximum element with the last element, remove the last element, and perform Max-Heapify
     std::swap(array[0], array[size - 1]);
     array[size - 1] = T();
     size--;
     MAX_HEAPIFY(array, 0, size);
 }
 
+/**
+ * Prints the elements of the array.
+ *
+ * @param array The array to be printed.
+ * @param size The size of the array.
+ * @tparam T The type of elements in the array.
+ */
 template<typename T>
 void printArray(T *array, int size) {
     for (int i = 0; i < size; i++) {
@@ -231,17 +283,33 @@ void printArray(T *array, int size) {
     }
     std::cout << std::endl;
 }
+
+/**
+ * Changes the value of an element at the specified index in the heap and maintains the max-heap property.
+ *
+ * @param array The array representing the heap.
+ * @param keyIndex The index of the element to be changed.
+ * @param newValue The new value to be assigned to the element.
+ * @tparam T The type of elements in the array.
+ */
 template<typename T>
 void HEAP_CHANGE_KEY(T *array, int keyIndex, T newValue) {
     array[keyIndex] = newValue;
     int parentIndex = (keyIndex - 1) / 2;
 
+    // Swap the element with its parent as long as it is greater, and update indices
     while (keyIndex > 0 && array[parentIndex] < array[keyIndex]) {
         std::swap(array[keyIndex], array[parentIndex]);
         keyIndex = parentIndex;
         parentIndex = (keyIndex - 1) / 2;
     }
 }
+//-------------------------------------------------------------------
+//-------------------------------------------------------------------
+
+
+
+
 
 int main() {
     MinHeap<int> myHeap;
