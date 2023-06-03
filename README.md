@@ -10,8 +10,10 @@ The repository currently includes the following data structures and algorithms:
 - Binary Search Tree (BST)
 - AVL Tree
 - Min Heap as class
-- ### Heaps as functions By ahanfybekheet
-- ### Sorting algorithms By YoussefMoataz:
+- ### By ahanfybekheet:
+  * Heaps as functions
+  * Radix sort
+- ### By YoussefMoataz:
   * Insertion Sort
   * Selection Sort
   * Bubble Sort
@@ -19,4 +21,4 @@ The repository currently includes the following data structures and algorithms:
   * Merge Sort
   * Quick Sort
   * Counting Sort
-- Double Linked List
+  * Double Linked List
