@@ -22,3 +22,19 @@ The repository currently includes the following data structures and algorithms:
   * Quick Sort
   * Counting Sort
   * Double Linked List
+
+
+## Notes
+ 
+| Algorithm      | In-Place     | Stability |
+|----------------|--------------|-----------|
+| Selection Sort | in-place     | Not Stable|
+| Bubble Sort    | in-place     | Stable    |
+| Insertion Sort | in-place     | Stable    |
+| Quick Sort     | in-place     | Not Stable|
+| Shell Sort     | in-place     | Not Stable|
+| Heap Sort      | in-place     | Not Stable|
+| Count Sort     | not in-place | Stable    |
+| Merge Sort     | not in-place | Stable    |
+| Radix Sort     | not in-place | Stable    |
+
