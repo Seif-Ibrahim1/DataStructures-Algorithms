@@ -1,16 +1,17 @@
 /*
-    Author: Youssef Moataz
+    Author: Youssef Moataz, Ahmed Hanfy
     Project: Sort Algorithms
     Description: 7 Sorting algorithms implementation
 
     Last Updated: 2/6/2023
 
-    Github: YoussefMoataz
+    Github: YoussefMoataz, ahanfybekheet
 
 */
 
 #include <iostream>
-
+#include <string>
+#include <math.h>
 using namespace std;
 
 /**
@@ -333,5 +334,64 @@ public:
         }
 
     }
+//----------------------------------------------------------------
+//                    Radix Sort Function
+//----------------------------------------------------------------
+    /**
+     * Radix sort algorithm for sorting an array of elements.
+     * 
+     * @tparam T The type of the elements in the array.
+     * @param arr Pointer to the array to be sorted.
+     * @param size The number of elements in the array.
+     * @param max The maximum element in the array (optional).
+     */
+    void radixSort(T *arr, int size, int max = 0) {
+        // If max is not provided, find the maximum element in the array
+        if (max == 0) {
+            max = arr[0];
+            for (int i = 1; i < size; i++) {
+                if (max < arr[i]) {
+                    max = arr[i];
+                }
+            }
+        }
 
+        // Calculate the number of digits in the maximum element
+        int maxLenght = std::to_string(max).length();
+
+        // Create a temporary array to store sorted elements
+        T *output = new T[size];
+
+        // Perform counting sort for each digit
+        for (int i = 0; i < maxLenght; i++) {
+            // Initialize count array with zeros
+            int count[10] = { 0 };
+
+            // Count the frequency of each digit at current position
+            for (int j = 0; j < size; j++) {
+                int iDigitOfArr = (arr[j] % static_cast<int>(std::pow(10, i + 1))) / static_cast<int>(std::pow(10, i));
+                count[iDigitOfArr]++;
+            }
+
+            // Calculate the cumulative count to determine the positions of elements
+            for (int j = 1; j < 10; j++) {
+                count[j] += count[j - 1];
+            }
+
+            // Build the output array by placing elements in sorted order
+            for (int j = size - 1; j >= 0; j--) {
+                int iDigitOfArr = (arr[j] % static_cast<int>(std::pow(10, i + 1))) / static_cast<int>(std::pow(10, i));
+                output[count[iDigitOfArr] - 1] = arr[j];
+                count[iDigitOfArr]--;
+            }
+
+            // Copy the sorted elements back to the original array
+            for (int j = 0; j < size; j++) {
+                arr[j] = output[j];
+            }
+        }
+
+        // Free the memory allocated for the temporary array
+        delete[] output;
+    }
 };
