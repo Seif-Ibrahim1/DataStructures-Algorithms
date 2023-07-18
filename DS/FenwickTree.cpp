@@ -1,6 +1,6 @@
 /*
     Author: Seif Ibrahim
-    Description: Suffix Array Data Strcture implementation
+    Description: Fenwick Tree Data Strcture implementation
 
     Last Updated: 18/7/2023
 
